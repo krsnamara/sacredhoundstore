@@ -9,8 +9,8 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('cart/', views.cart, name='cart'),
     path('shop/<int:item_id>/', views.item_detail, name='detail'),
-    # path('shop/create/', views.Items.as_view(), name='items_create'),
-    # path('shop/<int:pk>/update/', views.ItemsUpdate.as_view(), name='items_update'),
-    # path('shop/<int:pk>/delete/', voews.ItemsDelete.as_view(), name='items_delete'),
+    path('shop/create/', views.ItemCreate.as_view(), name='item_create'),
+    path('shop/<int:pk>/update/', views.ItemUpdate.as_view(), name='item_update'),
+    path('shop/<int:pk>/delete/', views.ItemDelete.as_view(), name='item_delete'),
     path('accounts/signup/', views.signup, name='signup'),
 ]

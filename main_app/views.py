@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Item
+from .models import Item, CartItem, Order
 from django.http import HttpResponse
 
 # TODO adding the ability to have seller update and upload pictures of product
@@ -56,7 +56,7 @@ def signup(request):
 
 
 class ItemCreate(CreateView):
-    model : Item
+    model = Item
     fields = ('__all__')
     success_url = '/shop/'
 
@@ -64,3 +64,10 @@ class ItemCreate(CreateView):
         form.instance.user =self.request.user
         return super().form_valid(form)
 
+class ItemUpdate(UpdateView):
+    model = Item
+    fields = '__all__'
+
+class ItemDelete(DeleteView):
+    model = Item
+    success_url = '/shop/'

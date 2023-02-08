@@ -1,7 +1,8 @@
 from django.contrib import admin
-# import your models here
-from .models import Item
+from .models import Item, CartItem, Order
 
-# Register your models here
 admin.site.register(Item)
-# Register your models here.
+admin.site.register(CartItem)
+admin.site.register(Order)
+
+
