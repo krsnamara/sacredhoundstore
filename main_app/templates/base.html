@@ -24,17 +24,39 @@
             </li>
           </ul>
           <ul class="center">
-            <li><a class=" teal-text darken-4" href="/">home</a></li>
-            <li><a class=" teal-text darken-4" href="/about">about</a></li>
-            <li><a class=" teal-text darken-4" href="/shop">shop</a></li>
-            <li><a class=" teal-text darken-4" href="/contact">contact</a></li>
+            <li><a class=" black-text darken-4" href="/">home</a></li>
+            <li><a class=" black-text darken-4" href="/about">about</a></li>
+            <li><a class=" black-text darken-4" href="/shop">shop</a></li>
+            <li><a class=" black-text darken-4" href="/contact">contact</a></li>
+            {% if user.is_authenticated %}
+            <li><a class=" black-text darken-4" href={% url 'cart' %}>cart</a></li>
+            <li><a class=" black-text darken-4" href={% url 'logout' %}>log out</a></li>
+            {% else %}
+            <li><a class='admin-trigger black-text darken-4' href='' data-target='dropdown3'>login</a></li>
+            {% comment %} <li><a class=" teal-text darken-4" href="{% url 'login' %}">log in</a></li> {% endcomment %}
+            {% comment %} <li><a class=" teal-text darken-4" href="{% url 'signup' %}">Create User</a></li> {% endcomment %}
+            {% endif %}
+          </ul>
+          <ul id='dropdown3' class='dropdown-content white-text'>
+            {% if user.is_authenticated %}
+            <li><a class=" black-text darken-4" href="/admin">admin</a></li>
+            <li><a class=" black-text darken-4" href={% url 'logout' %}>log out</a></li>
+            {% else %}
+            <li><a class=" black-text darken-4" href="/admin">admin</a></li>
+            <li><a class=" black-text darken-4" href="{% url 'login' %}">log in</a></li>
+            <li><a class=" black-text darken-4" href="{% url 'signup' %}">create user</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
-      <div class="right">
+      {% if user.is_authenticated %}
+      <a class="right black-text darken-4" href="/admin">admin</a>
+      {% else %}
+      {% endif %}
+      <div class="right black-text darken-4">
         All Rights Reserved, © 2023 Sacred Hound Designs  
       </div>
     </footer>
@@ -42,6 +64,9 @@
 </html>
 
 <script>
-
+  $('.admin-trigger').dropdown({
+    coverTrigger: false,
+    hover: true
+  });
 
 </script>

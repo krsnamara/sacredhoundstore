@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Items
+from .models import Item
 from django.http import HttpResponse
 
 # TODO adding the ability to have seller update and upload pictures of product
@@ -22,14 +24,43 @@ def about(request):
     return render(request, 'about.html')
 
 def shop(request):
-    items = Items.objects.filter(user=request.user)
+    items = Item.objects.all()
     return render(request, 'items/shop.html', { 'items': items})
 
 def contact(request):
     return render((request), 'contact.html')
 
-def item_detail(request, items_id):
-    item = Items.objects.get(id=items_id)
+@login_required
+def cart(request):
+    return render((request), 'cart/cart.html')
+
+def item_detail(request, item_id):
+    item = Item.objects.get(id=item_id)
     return render(request, 'items/detail.html', {
-        'items': items,
+        'item': item,
     })
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('shop')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
+
+class ItemCreate(CreateView):
+    model : Item
+    fields = ('__all__')
+    success_url = '/shop/'
+
+    def form_valid(self, form):
+        form.instance.user =self.request.user
+        return super().form_valid(form)
+

@@ -14,8 +14,9 @@
           <p>{{ item.description }}</p>
         </div>
         <div class="card-action">
-          <a href="/shop/{{ item.id }}">Get the Scoop</a>
+          <a href="{% url 'detail' item.id %}">Get the Scoop</a>
         </div>
       </div>
     </div>
   </div>
+  {% endfor %} {% endblock %}

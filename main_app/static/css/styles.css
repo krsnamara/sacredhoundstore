@@ -1,13 +1,9 @@
 body {
-    /* background: linear-gradient(#e66465, #071bf7); */
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    justify-content: space-between;
 }
-
-/* main {
-    flex: 1 0 auto;
-} */
 
 a {
     color: black;
@@ -20,30 +16,66 @@ a {
 }
 
 .logo-img {
+    margin-top: 20px;
     height: 150px;
     mix-blend-mode: multiply;
 }
 
 /* NAV STYLING */
-
 .nav-spacer {
     height: 150px;
 }
 
 nav {
     height: 150px;
-    background-color: rgb(0, 128, 128, .5);
+    background-color: rgb(0, 128, 128);
 }
-
+.nav-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: solid rgb(2, 86, 86) 3px;
+}
 
 /* FOOTER STYLING */
 .page-footer{
-    background-color: rgb(0, 128, 128, .5);
+    border-top: solid rgb(2, 86, 86) 3px;
+    background-color: rgb(0, 128, 128);
 }
 
 footer {
+    color: black;
+    display: flex;
+    position: sticky;
+    justify-content: baseline;
     height: 100px;
     padding-top: 0;
     text-align: right;
     background-color: white;
+    border-top: solid black 2px;
   }
+
+/* ABOUT PAGE STYLING */
+.about-background {
+    background-image: url(https://i.imgur.com/ahQVtaP.png);
+    background-color: aqua;
+}
+
+/* HOME PAGE STYLING */
+.home-container{
+    /* display: flex; */
+    background-image: url(https://i.etsystatic.com/33955933/r/il/050297/4066686972/il_794xN.4066686972_g0z6.jpg);
+    background-size: cover;
+    flex: 1;
+}
+/* .text-wrapper {
+    background-color: rgb(255, 228, 196, .05);
+    border: solid black 1px;
+    border-radius: 5px;
+} */
+
+/* .container{
+    height: 100vh;
+    background-image: url(https://i.imgur.com/ahQVtaP.png);
+    background-size: cover;
+} */

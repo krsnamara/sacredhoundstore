@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>This is where the shop items detail page will be</h1>
-
+<img src="{{ item.image}}" alt="detail-image">
+<div class="detail-display">
+    <h1>{{ item.name }}</h1>
+    <h4>Material: {{ item.materials}}</h4>
+    <p>Description: {{ item.description}}</p>
+    <h3>${{ item.price}}</h3>
+    <input class="btn" type="button" value="Add to Cart">
+</div>
 
 
 

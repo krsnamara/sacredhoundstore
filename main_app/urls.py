@@ -7,8 +7,10 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('shop/', views.shop, name='shop'),
     path('contact/', views.contact, name='contact'),
-    path('shop/<int:items_id>/', views.item_detail, name='detail'),
+    path('cart/', views.cart, name='cart'),
+    path('shop/<int:item_id>/', views.item_detail, name='detail'),
     # path('shop/create/', views.Items.as_view(), name='items_create'),
     # path('shop/<int:pk>/update/', views.ItemsUpdate.as_view(), name='items_update'),
     # path('shop/<int:pk>/delete/', voews.ItemsDelete.as_view(), name='items_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
