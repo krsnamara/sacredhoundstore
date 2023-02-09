@@ -19,12 +19,12 @@ class Item(models.Model):
         return self.name
 
 class CartItem(models.Model):
-    quantity = models.IntegerField()
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.OneToOneField(Profile, on_delete=models.SET_NULL, null=True)
+    is_ordered = models.BooleanField(default=False)
+    date_ordered = models.DateTimeField(null=True)
 
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'cartItem_id': self.id})     
+    def __str__(self):
+        return self.item.name
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
