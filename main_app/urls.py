@@ -7,11 +7,13 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('shop/', views.shop, name='shop'),
     path('contact/', views.contact, name='contact'),
-    # path('cart/', views.cart, name='cart'),
-    path('cart/<int:cart_id>/', views.cart, name='cart'),
+    path('carts/', views.carts, name='carts'),
+    path('carts/<int:cart_id>/', views.carts_detail, name='carts_detail'),
+    path('carts/create/', views.CartCreate.as_view(), name='carts_create'),
     path('shop/<int:item_id>/', views.item_detail, name='detail'),
     path('shop/create/', views.ItemCreate.as_view(), name='item_create'),
     path('shop/<int:pk>/update/', views.ItemUpdate.as_view(), name='item_update'),
     path('shop/<int:pk>/delete/', views.ItemDelete.as_view(), name='item_delete'),
     path('accounts/signup/', views.signup, name='signup'),
-]
+    path('cart/<int:cart_id>/assoc_item/<int:item_id>/', views.assoc_item, name='assoc_item')
+    ]   

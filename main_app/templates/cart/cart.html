@@ -1,8 +1,30 @@
 {% extends 'base.html' %}
+{% block bodyclass %}
+class="body-contact"
+{% endblock %}
 {% block content %}
-
-<h1>This is where the shopping cart items will be display</h1>
-
+<h3>What your Cart Has</h3>
+    {% if cart.count %}
+      {% for item in carts%}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              A <span class="{{cart.color.lower}}-text">{{ toy.color }}</span>
+              {{ toy.name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_toy' cat.id toy.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Add" class="btn">
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+      {% else %}
+      <h5>Make a Cart Here</h5>
+      
+    {% endif %}  
 
 
 

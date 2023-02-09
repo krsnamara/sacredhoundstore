@@ -5,10 +5,10 @@
 {% if error_message %}
 <p class="red-text">{{ error_message }}</p>
 {% endif %}
-<div class="catform">
+<div class="">
     <form method="post" action="{% url 'signup' %}">
         {% csrf_token %} {{ form.as_p }}
-        <input type="submit" class="btn catform" value="signup" />
+        <input type="submit" class="btn" value="signup" />
     </form>
 </div>
 

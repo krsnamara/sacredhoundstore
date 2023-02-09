@@ -18,14 +18,21 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
-class CartItem(models.Model):
-    quantity = models.IntegerField()
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'cartItem_id': self.id})     
+        return reverse('detail', kwargs={'pk': self.id})
 
 class Cart(models.Model):
+    name = models.CharField(max_length=100)
+    item = models.ManyToManyField(Item)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart_item = models.ForeignKey(CartItem, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+    
+class CartItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.quantity} x {self.item}'
