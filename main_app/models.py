@@ -26,6 +26,6 @@ class CartItem(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'cartItem_id': self.id})     
 
-class Order(models.Model):
+class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cart_item = models.ForeignKey(CartItem, on_delete=models.CASCADE)
