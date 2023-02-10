@@ -58,7 +58,7 @@ def add_to_cart(request, item_id):
     cart = Cart.objects.get(id=request.session["cart"])
     item = Item.objects.get(id=item_id)
     cart.items.add(item)
-    return redirect('cart',  item_id=item_id)
+    return redirect('detail',  item_id=item_id)
 
 def signup(request):
     error_message = ''
