@@ -19,7 +19,7 @@ class Item(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.id})
+        return reverse('detail', kwargs={'item_id': self.id})
 
 class Cart(models.Model):
     name = models.CharField(max_length=100)

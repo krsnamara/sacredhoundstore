@@ -46,16 +46,18 @@ def carts_detail(request):
 
 def item_detail(request, item_id):
     item = Item.objects.get(id=item_id)
-    # cartitem_form = CartItemForm()
     return render(request, 'items/detail.html', {
         'item': item,
-        # 'cartitem_form': cartitem_form,
     })
 
 def create_cart(request):
-    # if not Cart.objects.filter(user=request.user).exists():
     cart = Cart.objects.get_or_create(user=request.user)
-    request.session["cart"] = cart[0].id
+    request.session['cart'] = cart[0].id
+
+@login_required
+def assoc_item(request, cart_id, item_id):
+    Cart.objects.get(id=cart_id).items.add(item_id)
+    return redirect('detail', cart_id=cart_id)
 
 def signup(request):
     error_message = ''
@@ -71,11 +73,6 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
-
-@login_required
-def assoc_item(request, cart_id, item_id):
-    Cart.objects.get(id=cart_id).items.add(item_id)
-    return redirect('detail', cart_id=cart_id)
 
 class ItemCreate(LoginRequiredMixin, CreateView):
     model = Item

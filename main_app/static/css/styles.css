@@ -55,47 +55,62 @@ footer {
     background-color: white;
     border-top: solid black 2px;
   }
-
-/* ABOUT PAGE STYLING */
-.background-about {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.aboutMain{
-    margin-top: 150px;
-    height: 60vh;
-    width: auto;
-    background-image: url(https://i.imgur.com/ahQVtaP.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/* .container {
+  
+  /* FORMS STYLING*/
+  .form {
+      background-color: rgb(109, 255, 240, .5);
+      border: solid teal 3px;
+      border-radius: 10px;
+      padding-bottom: 15px;
+      color: black;
+    }
     
-} */
-
-/* HOME PAGE STYLING */
-
-.background-home{
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
-    background-image: url(https://i.etsystatic.com/33955933/r/il/050297/4066686972/il_794xN.4066686972_g0z6.jpg);
-    background-size:cover;
-}
-
-.home-container, .aboutdiv{
-    background-color: rgb(250, 225, 194, .3);
-    border: solid rgba(223, 155, 73, 0.4) 3px;
-    border-radius: 15px;
-    text-align: center;
-}
-
-/* CONTACT STYING */
+    label {
+        color: black;
+    }
+    
+    td>input {
+        border-bottom: 1px solid black;
+    }
+    
+    
+    /* HOME PAGE STYLING */
+    
+    .background-home{
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: url(https://i.etsystatic.com/33955933/r/il/050297/4066686972/il_794xN.4066686972_g0z6.jpg);
+        background-size:cover;
+    }
+    
+    .home-container, .aboutdiv{
+        background-color: rgb(250, 225, 194, .3);
+        border: solid rgba(223, 155, 73, 0.4) 3px;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    /* ABOUT PAGE STYLING */
+    .background-about {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: url(https://i.imgur.com/AzDFeoM.png);
+        /* background-image: url(https://i.imgur.com/ahQVtaP.png); */
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .aboutMain{
+        margin-top: 150px;
+        height: 60vh;
+        width: auto;
+    }
+    
+    /* CONTACT STYING */
 .body-contact{
     display: flex;
     min-height: 100vh;
