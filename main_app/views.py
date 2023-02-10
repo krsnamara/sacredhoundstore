@@ -41,7 +41,6 @@ def carts_detail(request):
 #   items_cart_doesnt_have = Item.objects.exclude(id__in=cart.items.all().values_list('id'))
   return render(request, 'cart/detail.html', {
     'cart': cart,
-    # 'items': items_cart_doesnt_have
   })
 
 def item_detail(request, item_id):
@@ -55,9 +54,11 @@ def create_cart(request):
     request.session['cart'] = cart[0].id
 
 @login_required
-def assoc_item(request, cart_id, item_id):
-    Cart.objects.get(id=cart_id).items.add(item_id)
-    return redirect('detail', cart_id=cart_id)
+def add_to_cart(request, item_id):
+    cart = Cart.objects.get(id=request.session["cart"])
+    item = Item.objects.get(id=item_id)
+    cart.items.add(item)
+    return redirect('cart',  item_id=item_id)
 
 def signup(request):
     error_message = ''

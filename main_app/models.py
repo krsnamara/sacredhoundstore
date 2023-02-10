@@ -3,10 +3,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import date
 
-# Create your models here.
-
-# Order = models.ForeignKey('Order', on_delete=models.CASCADE)
-
 class Item(models.Model):
     name = models.CharField(max_length=100)
     materials = models.CharField(max_length=100)

@@ -1,8 +1,11 @@
-{% extends 'base.html' %} {% block content %}
-
+{% extends 'base.html' %} 
+{% block bodyclass %}
+class="body-contact"
+{% endblock %}
+{% block content %}
 <h1>Log In</h1>
 
-<div class="">
+<div class="form">
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %} {{ form.as_p }}
         <input type="submit" class="btn" value="login" />
