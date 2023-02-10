@@ -8,10 +8,11 @@
         <p>Description: {{ item.description}}</p>
         <h3>${{ item.price}}</h3>
         {% if user.is_authenticated %}        
-        <form action="{% url 'assoc_item' cart.id item.id %}" method="POST">
+        {% comment %} <form action="{% url 'assoc_item' cart.id item.id %}" method="POST">
             {% csrf_token %}
             <input type="submit" value="Add to Cart" class="btn">
-        </form>
+        </form> {% endcomment %}
+        <a class="btn" href="">Add to Cart</a>
         {% else %}
             <a class="btn" href="{% url 'login' %}">Add to Cart</a>
         {% endif %}

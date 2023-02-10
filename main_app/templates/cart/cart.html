@@ -3,29 +3,14 @@
 class="body-contact"
 {% endblock %}
 {% block content %}
-<h3>What your Cart Has</h3>
-    {% if cart.count %}
-      {% for item in carts%}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">
-              A <span class="{{cart.color.lower}}-text">{{ toy.color }}</span>
-              {{ toy.name }}
-            </span>
-          </div>
-          <div class="card-action">
-            <form action="{% url 'assoc_toy' cat.id toy.id %}" method="POST">
-              {% csrf_token %}
-              <input type="submit" value="Add" class="btn">
-            </form>
-          </div>
-        </div>
-      {% endfor %}
-      {% else %}
-      <h5>Make a Cart Here</h5>
-      
-    {% endif %}  
-
-
-
-{% endblock %}
+<h3>Pick a Cart</h3>
+   
+{% for cart in carts %}
+<div class="card">
+<a href="{% url 'carts_detail' cart.id %}">
+  <div class="card-content">
+    <p>Cart Name: {{ cart.name }} </p>
+  </div>
+</a>
+</div>
+{% endfor %} {% endblock %}

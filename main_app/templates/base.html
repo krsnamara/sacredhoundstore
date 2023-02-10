@@ -29,19 +29,19 @@
             <li><a class=" black-text darken-4" href="/shop">shop</a></li>
             <li><a class=" black-text darken-4" href="/contact">contact</a></li>
             {% if user.is_authenticated %}
-            <li><a class='cart-trigger black-text darken-4' href='' data-target='dropdown1'>cart</a></li>
+            <li><a class=" black-text darken-4" href={% url 'cart' %}>view cart</a></li>
             <li><a class=" black-text darken-4" href={% url 'logout' %}>log out</a></li>
             {% else %}
             <li><a class='admin-trigger black-text darken-4' href='' data-target='dropdown3'>login</a></li>
             {% endif %}
           </ul>
-          <ul id='dropdown1' class='dropdown-content white-text'>
+          {% comment %} <ul id='dropdown1' class='dropdown-content white-text'>
             {% if user.is_authenticated %}
             <li><a class=" black-text darken-4" href={% url 'carts' %}>view all carts</a></li>
-            <li><a class=" black-text darken-4" href={% url 'carts_create' %}>create cart</a></li>
-            {% else %}
-            {% endif %}
-          </ul>
+            {% comment %} <li><a class=" black-text darken-4" href={% url 'carts_create' %}>create cart</a></li> {% endcomment %}
+            {% comment %} {% else %}
+            {% endif %} {% endcomment %}
+          
           <ul id='dropdown3' class='dropdown-content white-text'>
             {% if user.is_authenticated %}
             <li><a class=" black-text darken-4" href="/admin">admin</a></li>

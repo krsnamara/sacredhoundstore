@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Item, CartItem, Cart
+from .models import Item, Cart
 from django.http import HttpResponse
 
 # TODO adding the ability to have seller update and upload pictures of product
@@ -30,19 +30,18 @@ def shop(request):
 def contact(request):
     return render((request), 'contact.html')
 
-@login_required
-def carts(request):
-    carts = Cart.objects.filter(user=request.user)
-    return render(request, 'cart/cart.html', {'carts': carts})
+# @login_required
+# def carts(request):
+#     carts = Cart.objects.filter(user=request.user)
+#     return render(request, 'cart/cart.html', {'carts': carts})
 
 @login_required
-def carts_detail(request, cart_id):
-  cart = Cart.objects.get(id=cart_id)
-  #instantiant the feeding form
-  item_cart_doesnt_have = item.objects.exclude(id__in=cart.items.all().values_list('id'))
-  return render(request, 'carts/detail.html', {
+def carts_detail(request):
+  cart = Cart.objects.get(id=request.session['cart'])
+#   items_cart_doesnt_have = Item.objects.exclude(id__in=cart.items.all().values_list('id'))
+  return render(request, 'cart/detail.html', {
     'cart': cart,
-    'items': items_cart_doesnt_have
+    # 'items': items_cart_doesnt_have
   })
 
 def item_detail(request, item_id):
@@ -53,6 +52,11 @@ def item_detail(request, item_id):
         # 'cartitem_form': cartitem_form,
     })
 
+def create_cart(request):
+    # if not Cart.objects.filter(user=request.user).exists():
+    cart = Cart.objects.get_or_create(user=request.user)
+    request.session["cart"] = cart[0].id
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -60,6 +64,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            create_cart(request)
             return redirect('shop')
         else:
             error_message = 'Invalid sign up - try again'
@@ -89,18 +94,18 @@ class ItemDelete(LoginRequiredMixin, DeleteView):
     model = Item
     success_url = '/shop/'
 
-class CartCreate(LoginRequiredMixin, CreateView):
-    model = Cart
-    fields = ('name')
-    success_url = '/shop/'
+# class CartCreate(LoginRequiredMixin, CreateView):
+#     model = Cart
+#     fields = ('name',)
+#     success_url = '/carts/'
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)    
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user
+#         return super().form_valid(form)    
 
 class CartUpdate(LoginRequiredMixin, UpdateView):
   model = Cart
-  fields = ('name')
+  fields = ('name',)
 
 class CartDelete(LoginRequiredMixin, DeleteView):
   model = Cart
@@ -129,8 +134,6 @@ class CartDelete(LoginRequiredMixin, DeleteView):
 #         cart_item.quantity += 1
 #         cart_item.save()
 #     return redirect('cart')
-
-
 
 # class CartUpdate(LoginRequiredMixin, UpdateView):
 #     model = Cart
