@@ -152,3 +152,15 @@ footer {
 .detail-image {
     height:400px;
 }
+
+/* CART DISPLAY */
+
+.cartdisplay {
+    display: flex;
+    justify-content: space-around;
+}
+
+.block {
+    display: block;
+    justify-content: space-between;
+}
