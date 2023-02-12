@@ -1,0 +1,1 @@
+web: gunicorn sacred_hound_store.wsgi
