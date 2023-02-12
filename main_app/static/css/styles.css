@@ -57,12 +57,20 @@ footer {
   }
   
   /* FORMS STYLING*/
+
+  .main-class-forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .form {
-      background-color: rgb(109, 255, 240, .5);
-      border: solid teal 3px;
-      border-radius: 10px;
-      padding-bottom: 15px;
-      color: black;
+    background-color: rgb(109, 255, 240, .5);
+    border: solid teal 3px;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    color: black;
+    /* max-width: 500px; */
     }
     
     label {
