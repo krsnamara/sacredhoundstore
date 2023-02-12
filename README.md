@@ -37,15 +37,13 @@ This app is a fullstack Django build for our 4th project at General Assembly Imm
 ***
 ### Production version
 
-![production](/main_app/static/production_vid.mov)
+![production](/main_app/static/production_vid.gif)
 ***
 ## Deployed Website
 
-[temp](https://project2forgeneralassembly.herokuapp.com/forgotten) to visit deployed app! 
+[Click Here](https://sacredhoundstore.herokuapp.com/) to visit deployed app! 
 ***
 ## Future Enhancements
-- Embedding a credit card.
-- Adding a feature that allows users to submit an order for delivery.
-- Adding a feature that allows users delivery ticket to be sent to shop for processing.
-- Adding a feature that allows a user search pizza shops based zip code.
+- Embedding a credit card processing service like Stripe.
+- Adding more functionality to the options customers have when selecting sizes or colors.
 - Adding a feature that allows a users previous orders to be saved in users order history.
