@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 # app_name = 'sacred_hound_store'
 urlpatterns = [
@@ -16,5 +18,6 @@ urlpatterns = [
     path('shop/<int:pk>/update/', views.ItemUpdate.as_view(), name='item_update'),
     path('shop/<int:pk>/delete/', views.ItemDelete.as_view(), name='item_delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico'))),
     # path('cart/assoc_item/<int:item_id>/', views.assoc_item, name='add_to_cart')
     ]   
