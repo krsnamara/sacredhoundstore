@@ -4,26 +4,26 @@
 class="background-shop"
 {% endblock %}
 
+{% block mainClass %}
+shoppage
+{% endblock %}
+
 
 {% block content %}
+<h1>Shop Page</h1>
+
 <div class="shop-container">
-  <h1>Shop Page</h1>
-  
   {% for item in items %}
-  <div class="row shop-cards">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img class="shop-card-image" src="{{item.image}}">
-          <span class="card-title">{{ item.name }}</span>
-        </div>
-        {% comment %} <div class="card-content">
-          <p>{{ item.description }}</p>
-        </div> {% endcomment %}
-        <div class="card-action">
-          <a href="{% url 'detail' item.id %}">Get the Scoop</a>
-        </div>
+  <div class="itemwrapper">
+    <div class="itemcard">
+      <img class="shop-card-image" src="{{item.image}}">
+      <div class="card-info">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <h4 class="card-price">${{ item.price }}</h4>
       </div>
+    </div>
+    <div class="card-action">
+      <a class="btn" href="{% url 'detail' item.id %}">More Info</a>
     </div>
   </div>
   {% endfor %} {% endblock %}

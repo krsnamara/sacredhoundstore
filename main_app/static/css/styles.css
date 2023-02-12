@@ -127,18 +127,40 @@ footer {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.itemcard {
+    display: flex;
+    flex-direction: column;
+}
+.itemwrapper {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px teal;
+    border-radius: 1rem;
+    background-color: rgb(0, 128, 128, .3);
+    max-width: 290px;
+    padding: 5px;
+}
+.shoppage {
+    margin: 0px 150px 0px 150px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .shop-container {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 .shop-cards {
     display: flex;
+    flex-direction: column;
     gap: 30px;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
 }
 
 .shop-card-image {
-    width: 200px;
+    max-width: 200px;
 }
 
 /* DETAIL PAGE STYLING */
