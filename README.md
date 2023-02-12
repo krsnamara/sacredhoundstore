@@ -1,8 +1,8 @@
-![Logo](https://i.imgur.com/ckLPBCK.png)
-# CheesUs: An app built for Pizza lovers to support local shops.
+![Logo](/main_app/static/images/logo.jpeg)
+# Ecommerce for Friends Project: An app built for Sacred Hound Designs.
 ***
 ## Description
-CheesUs is a food delivery app specifically designed to give customers a list of pizza shops to chose from near by. The app is a paired down version of other food delivery apps, giving pizza shops a leg into to the online delivery market without having to use the GIANTS in the industry.
+This app is a fullstack Django build for our 4th project at General Assembly Immersive Bootcamp Nov 2022-Feb 2023. 
 ***
 ## Technologies Used
 
@@ -15,6 +15,7 @@ CheesUs is a food delivery app specifically designed to give customers a list of
 - Python
 - PostgreSQL
 - jQuery
+- Materialize
 - Trello
 - Figma
 - Git/Github
@@ -43,7 +44,7 @@ CheesUs is a food delivery app specifically designed to give customers a list of
 [temp](https://project2forgeneralassembly.herokuapp.com/forgotten) to visit deployed app! 
 ***
 ## Future Enhancements
-- Embedding a cred.
+- Embedding a credit card.
 - Adding a feature that allows users to submit an order for delivery.
 - Adding a feature that allows users delivery ticket to be sent to shop for processing.
 - Adding a feature that allows a user search pizza shops based zip code.
