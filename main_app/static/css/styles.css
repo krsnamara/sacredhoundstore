@@ -142,7 +142,7 @@ footer {
     padding: 5px;
 }
 .shoppage {
-    margin: 0px 150px 0px 150px;
+    margin: 0px 150px 50px 150px;
     display: flex;
     flex-wrap: wrap;
 }
