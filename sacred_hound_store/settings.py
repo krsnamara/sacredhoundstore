@@ -80,8 +80,8 @@ WSGI_APPLICATION = 'sacred_hound_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sacred_hound',
+        'ENGINE': os.getenv("ENGINE"),
+        'NAME': os.getenv("NAME"),
     }
 }
 
