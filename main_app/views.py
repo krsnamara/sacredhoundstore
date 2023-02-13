@@ -35,13 +35,6 @@ def contact(request):
 #     carts = Cart.objects.filter(user=request.user)
 #     return render(request, 'cart/cart.html', {'carts': carts})
 
-@login_required
-def carts_detail(request):
-  cart = Cart.objects.get(id=request.session['cart'])
-#   items_cart_doesnt_have = Item.objects.exclude(id__in=cart.items.all().values_list('id'))
-  return render(request, 'cart/detail.html', {
-    'cart': cart,
-  })
 
 def item_detail(request, item_id):
     item = Item.objects.get(id=item_id)
@@ -49,9 +42,33 @@ def item_detail(request, item_id):
         'item': item,
     })
 
+# def create_cart(request):
+#     cart = Cart.objects.get_or_create(user=request.user)
+#     request.session['cart'] = cart[0].id
+    
+# @login_required
+# def carts_detail(request):
+#     if request.session == 'cart':
+#         cart = Cart.objects.get(id=request.session['cart'])
+#     else:
+#         cart = Cart.objects.get_or_create(user=request.user)
+#         request.session['cart'] = cart[0].id
+# #   items_cart_doesnt_have = Item.objects.exclude(id__in=cart.items.all().values_list('id'))
+#     return render(request, 'cart/detail.html', {
+#     'cart': cart,
+#   })
+
 def create_cart(request):
-    cart = Cart.objects.get_or_create(user=request.user)
-    request.session['cart'] = cart[0].id
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    request.session['cart'] = cart.id
+
+@login_required
+def carts_detail(request):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    request.session['cart'] = cart.id
+    return render(request, 'cart/detail.html', {
+        'cart': cart,
+    })
 
 @login_required
 def add_to_cart(request, item_id):
