@@ -21,9 +21,9 @@
 {% endblock %}
 
 {% block footer %} 
-    <br>
+    {% comment %} <br>
     <a class="btn" href="{% url 'item_update' item.id %}">Edit</a>
     <br>
     <a class="btn" href="{% url 'item_delete' item.id %}">Delete</a>
-    <a class="btn" href="{% url 'item_create' %}">Add an Item</a>
+    <a class="btn" href="{% url 'item_create' %}">Add an Item</a> {% endcomment %}
 {% endblock %}
