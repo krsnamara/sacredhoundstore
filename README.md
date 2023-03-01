@@ -37,7 +37,7 @@ This app is a fullstack Django build for our 4th project at General Assembly Imm
 ***
 ### Production version
 
-![production](/main_app/static/production_vid.gif)
+![production](/main_app/static/images/production.png)
 ***
 ## Deployed Website
 
