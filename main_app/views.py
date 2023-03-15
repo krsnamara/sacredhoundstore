@@ -40,6 +40,8 @@ def contact(request):
             # assert False // this was here for development purposes to test form
             con = get_connection('django.core.mail.backends.smtp.EmailBackend')
             send_mail(
+                cd['yourname'],
+                cd['email'],
                 cd['subject'],
                 cd['message'],
                 cd.get('email', 'martinj.fitzpatrick@gmail.com'),
