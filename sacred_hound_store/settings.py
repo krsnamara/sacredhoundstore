@@ -74,6 +74,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sacred_hound_store.wsgi.application'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django_ses.SESBackend'
+# AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+# AWS_SES_REGION_NAME = os.getenv("AWS_SES_REGION_NAME")
+# AWS_SES_REGION_ENDPOINT = os.getenv("AWS_SES_REGION_ENDPOINT") #(ex: email.us-east-2.amazonaws.com)
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -136,3 +142,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 import django_heroku
 django_heroku.settings(locals())
+
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT ='587'
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

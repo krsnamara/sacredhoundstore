@@ -41,13 +41,19 @@ nav {
 .page-footer{
     border-top: solid rgb(2, 86, 86) 3px;
     background-color: rgb(0, 128, 128, .7);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 25px 25px 0px 25px;
+    /* gap: 50px; */
 }
 
 footer {
     color: black;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     /* position: sticky; */
+    gap: 15px;
     justify-content: baseline;
     height: 100px;
     padding-top: 0;
@@ -56,67 +62,108 @@ footer {
     border-top: solid black 2px;
   }
   
-  /* FORMS STYLING*/
+/* FORMS STYLING*/
 
-  .main-class-forms{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.main-class-forms{
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
-  .form {
-    background-color: rgb(109, 255, 240, .5);
-    border: solid teal 3px;
-    border-radius: 10px;
-    padding-bottom: 15px;
+.form {
+background-color: rgb(250, 225, 194, .3);
+backdrop-filter: blur(10px);
+border: solid teal 3px;
+border-radius: 10px;
+padding: 15px;
+color: black;
+width: 400px;
+}
+
+label {
     color: black;
-    width: 400px;
-    }
-    
-    label {
-        color: black;
-    }
-    
-    td>input {
-        border-bottom: 1px solid black;
-    }
-    
-    
-    /* HOME PAGE STYLING */
-    
-    .background-home{
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-        justify-content: space-between;
-        background-image: url(https://i.etsystatic.com/33955933/r/il/050297/4066686972/il_794xN.4066686972_g0z6.jpg);
-        background-size:cover;
-    }
-    
-    .home-container, .aboutdiv{
-        background-color: rgb(250, 225, 194, .3);
-        border: solid rgba(223, 155, 73, 0.4) 3px;
-        border-radius: 15px;
-        text-align: center;
-    }
-    
-    /* ABOUT PAGE STYLING */
-    .background-about {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-        justify-content: space-between;
-        background-image: url(https://i.imgur.com/AzDFeoM.png);
-        /* background-image: url(https://i.imgur.com/ahQVtaP.png); */
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    
-    .aboutMain{
-        margin-top: 150px;
-        height: 60vh;
-        width: auto;
-    }
+}
+
+td>input {
+    border-bottom: 1px solid black;
+}
+/* From tutorial on contact form https://www.youtube.com/watch?v=1ihn3iRXtsY 3/13/23 */
+ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+.errorlist li {
+    border: 1px solid red;
+    color: red;
+    background: rgba(225, 0, 0, 0.15);
+    list-style-position: inside;
+    display: block;
+    font-size: 1.2em;
+    margin: 0 0 3px;
+    padding: 4px 5px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 5px!important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb( 169, 169, 169);
+}
+
+input {
+    height: 30px;
+}
+.success {
+    background-color: rga(0, 128, 0, 0.15);
+    padding: 10px;
+    text-align: center;
+    color: green;
+    border: 1px solid green;
+    border-radius: 3px;
+}
+
+/* HOME PAGE STYLING */
+
+.background-home{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(https://i.etsystatic.com/33955933/r/il/050297/4066686972/il_794xN.4066686972_g0z6.jpg);
+    background-size:cover;
+}
+
+.home-container, .aboutdiv{
+    background-color: rgb(250, 225, 194, .3);
+    border: solid rgba(223, 155, 73, 0.4) 3px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* ABOUT PAGE STYLING */
+.background-about {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(https://i.imgur.com/AzDFeoM.png);
+    /* background-image: url(https://i.imgur.com/ahQVtaP.png); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.aboutMain{
+    margin-top: 150px;
+    height: 60vh;
+    width: auto;
+}
     
     /* CONTACT STYING */
 .body-contact{
@@ -145,7 +192,7 @@ footer {
     flex-direction: column;
     border: solid 2px teal;
     border-radius: 1rem;
-    background-color: rgb(0, 128, 128, .3);
+    background-color: rgb(250, 225, 194, .3);
     max-width: 290px;
     padding: 5px;
 }
@@ -168,6 +215,7 @@ footer {
 }
 
 .shop-card-image {
+    mix-blend-mode: multiply;
     max-width: 200px;
 }
 

@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from .models import CartItem
+from django import forms
 
-
-class CartItemForm(ModelForm):
-    class Meta:
-        model = CartItem()
-        fields = ('quantity')
+class ContactForm(forms.Form):
+    yourname = forms.CharField(max_length=100, label='Your Name')
+    email = forms.EmailField(label='Your email address', required=False)
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)

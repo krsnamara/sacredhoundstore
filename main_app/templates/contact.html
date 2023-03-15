@@ -1,14 +1,50 @@
 {% extends 'base.html' %}
+
+{% block title %}Contact{% endblock %}
+
 {% block bodyclass %}
 class="body-contact"
 {% endblock %}
+{% block mainClass %}
+main-class-forms
+{% endblock %}
+
 {% block content %}
 
-<div class="aboutdiv">    
-    <h1>It will be an input form for folks to drop a message</h1>
-    <p>Also a mail:to for email correspondence</p>
-</div>
+{% if submitted %}
+    <p class="success">
+        Your message was submitted successfully. Thank you.
+    </p>
+
+{% else %}
+    <form action="" method="POST" novalidate class="form">
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+        {% csrf_token %}
+    </form>
+{% endif %}
 
 
 
 {% endblock %}
+
+{% comment %} <div class="aboutdiv">    
+        <div class="message">
+            <h1>Get in touch with me!</h1>
+            <p>Feel free to send me an email about projects you have in mind, collaborations, job opportunities, jokes that make you laugh...</p>
+
+        </div>
+        <div class="main-container">
+            <form name="contact-me" class="contact-form">
+                <input type="text" placeholder="What's your name?">
+                <input type="email" placeholder="Enter your email">
+                <textarea name="bodyText" cols="30" rows="10" placeholder="Your message here"></textarea>
+                <button @click="SendEmail()">Send Email</button>
+            </form>
+        </div>
+</div> {% endcomment %}

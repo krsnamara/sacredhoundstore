@@ -5,8 +5,12 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Item, Cart
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail, get_connection
+
+from .models import Item, Cart
+from .forms import ContactForm
 
 # TODO adding the ability to have seller update and upload pictures of product
 # import boto3
@@ -28,12 +32,27 @@ def shop(request):
     return render(request, 'items/shop.html', { 'items': items})
 
 def contact(request):
-    return render((request), 'contact.html')
+    submitted = False
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # assert False // this was here for development purposes to test form
+            con = get_connection('django.core.mail.backends.smtp.EmailBackend')
+            send_mail(
+                cd['subject'],
+                cd['message'],
+                cd.get('email'),
+                ['martinj.fitzpatrick@gmail.com'],
+                connection=con
+            )
+            return HttpResponseRedirect('/contact?submitted=True')
+    else:
+        form = ContactForm()
+        if 'submitted' in request.GET:
+            submitted = True
 
-# @login_required
-# def carts(request):
-#     carts = Cart.objects.filter(user=request.user)
-#     return render(request, 'cart/cart.html', {'carts': carts})
+    return render(request, 'contact.html', {'form': form, 'submitted': submitted})
 
 
 def item_detail(request, item_id):
