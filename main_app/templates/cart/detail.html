@@ -2,16 +2,16 @@
 
 {% block title %}Cart{% endblock %}
 
-{% block bodyclass %}
+{% comment %} {% block bodyclass %}
 class="body-contact"
-{% endblock %}
+{% endblock %} {% endcomment %}
 
 {% block mainClass %}
-main-class-forms
+cart-wrapper
 {% endblock %}
 
 {% block content %}
-<div class="form">
+<div class="cart-wrapper">
   <h1>Cart Details</h1>
   {% if cart.items %}
   {% for item in cart.items.all %}

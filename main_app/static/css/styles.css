@@ -47,14 +47,13 @@ nav {
     padding: 25px 25px 0px 25px;
     /* gap: 50px; */
 }
-
 footer {
     color: black;
     display: flex;
     flex-direction: row;
-    /* position: sticky; */
     gap: 15px;
     justify-content: baseline;
+    align-items: baseline;
     height: 100px;
     padding-top: 0;
     text-align: right;
@@ -107,7 +106,7 @@ ul.errorlist {
 }
 
 input, textarea {
-    width: 100%;
+    /* width: 100%; */
     padding: 5px!important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -122,12 +121,13 @@ input {
     height: 30px;
 }
 .success {
-    background-color: rgb(0, 128, 0, 0.5);
+    background-color: rgb(0, 128, 128, .2);
     backdrop-filter: blur(10px);
     padding: 10px;
+    font-size: 1.5rem;
     text-align: center;
     color: black;
-    border: 1px solid green;
+    border: 1px solid teal;
     border-radius: 3px;
 }
 
@@ -167,7 +167,7 @@ input {
     width: auto;
 }
     
-    /* CONTACT STYING */
+/* CONTACT STYING */
 .body-contact{
     display: flex;
     min-height: 100vh;
@@ -234,7 +234,9 @@ input {
 }
 
 /* CART DISPLAY */
-
+.cart-wrapper{
+    padding: 20px 0px 150px 0px;
+}
 .cartdisplay {
     display: flex;
     justify-content: space-around;

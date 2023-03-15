@@ -37,14 +37,14 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            # from_email = cd.get('email', 'noreply@example.com')
             # assert False // this was here for development purposes to test form
             con = get_connection('django.core.mail.backends.smtp.EmailBackend')
             send_mail(
-                cd['yourname'],
-                cd['email'],
                 cd['subject'],
                 cd['message'],
-                cd.get('email', 'martinj.fitzpatrick@gmail.com'),
+                # from_email,
+                cd.get('email', 'noreply@example.com'),
                 ['martinj.fitzpatrick@gmail.com'],
                 connection=con
             )
