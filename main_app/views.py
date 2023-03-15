@@ -42,7 +42,7 @@ def contact(request):
             send_mail(
                 cd['subject'],
                 cd['message'],
-                cd.get('email'),
+                cd.get('email', 'martinj.fitzpatrick@gmail.com'),
                 ['martinj.fitzpatrick@gmail.com'],
                 connection=con
             )
