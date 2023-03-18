@@ -18,6 +18,7 @@ main-class-forms
 
 {% else %}
     <form action="" method="POST" novalidate class="form">
+        {% csrf_token %}
         <table>
             {{ form.as_table }}
             <tr>
@@ -25,7 +26,6 @@ main-class-forms
                 <td><input type="submit" value="Submit"></td>
             </tr>
         </table>
-        {% csrf_token %}
     </form>
 {% endif %}
 
