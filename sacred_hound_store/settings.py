@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os 
+import dj_database_url
 load_dotenv() # take environment variables from .env
 
 
@@ -93,8 +94,8 @@ DATABASES = {
         'NAME': os.getenv("NAME"),
         'USER': os.getenv("USER"),
         'PASSWORD': os.getenv("PASSWORD"),
-        'HOST': 'db.bit.io',
-        'PORT': '5432',
+        'HOST': os.getenv("HOST"),
+        'PORT': os.getenv("PORT"),
     }
 }
 
